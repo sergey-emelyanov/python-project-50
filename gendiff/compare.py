@@ -26,5 +26,7 @@ def generate_diff(file_path1, file_path2):
             diff.append(f"{'+'} {i}: {prepare_boolean(dict2[i])}")
         elif dict1[i] == dict2[i]:
             diff.append(f"{' '} {i}: {prepare_boolean(dict1[i])}")
+
     diff.append('}')
+
     return '\n'.join(diff)
