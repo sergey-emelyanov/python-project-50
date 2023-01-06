@@ -11,6 +11,7 @@ def prepare_boolean(value):
 
 def generate_diff(file_path1, file_path2):
     diff = []
+    diff.append('{')
     dict1 = json.load(open(file_path1))
     dict2 = json.load(open(file_path2))
     all_keys = sorted(set(dict1) | set(dict2))
@@ -25,7 +26,5 @@ def generate_diff(file_path1, file_path2):
             diff.append(f"{'+'} {i}: {prepare_boolean(dict2[i])}")
         elif dict1[i] == dict2[i]:
             diff.append(f"{' '} {i}: {prepare_boolean(dict1[i])}")
-
+    diff.append('}')
     return '\n'.join(diff)
-
-
