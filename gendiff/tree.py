@@ -1,4 +1,4 @@
-def make_diff(old: dict, new: dict):
+def make_diff(old: dict, new: dict):  # noqa:  C901
     result = {}
 
     deleted_keys = set(sorted(old.keys())) - set(sorted(new.keys()))

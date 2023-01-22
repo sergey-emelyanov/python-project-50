@@ -10,7 +10,7 @@ def stringify_value(value):
     return f"'{value}'"
 
 
-def plain_format(diff, father_key=''):
+def plain_format(diff, father_key=''):  # noqa:  C901
     result = []
     for key, value in sorted(diff.items()):
         if len(father_key) > 1:
