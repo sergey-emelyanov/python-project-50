@@ -14,13 +14,12 @@ def make_diff(old: dict, new: dict):
         old_value = old[key]
         new_value = new[key]
         if isinstance(old_value, dict) and isinstance(new_value, dict):
-            result[key] = {'status': 'nested', 'value': make_diff(old_value, new_value)}
+            result[key] = {'status': 'nested',
+                           'value': make_diff(old_value, new_value)}
         elif old_value == new_value:
             result[key] = {'status': 'unchanged', 'value': old_value}
         elif old_value != new_value:
-            result[key] = {'status': 'changed', 'old_value': old_value, 'new_value': new_value}
+            result[key] = {'status': 'changed',
+                           'old_value': old_value, 'new_value': new_value}
 
     return result
-
-
-

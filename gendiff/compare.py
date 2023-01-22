@@ -12,6 +12,3 @@ def generate_diff(file_path1, file_path2, format_name='stylish'):
     diff = make_diff(dict1, dict2)
 
     return formatting(diff, format_name)
-
-
-

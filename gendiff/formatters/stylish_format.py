@@ -41,6 +41,3 @@ def stringify_diff(diff: dict, depth=1) -> str:
 def format(diff: dict) -> str:
     diff = normalize_values(diff)
     return f"{{\n{stringify_diff(diff)}}}"
-
-
-

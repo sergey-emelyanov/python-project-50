@@ -18,10 +18,12 @@ def plain_format(diff, father_key=''):
         elif value['status'] == 'del':
             result.append(f"Property '{key}' was removed")
         elif value['status'] == 'add':
-            result.append(f"Property '{key}' was added with value: {stringify_value(value['value'])}")
+            result.append(f"Property '{key}' was added with value: "
+                          f"{stringify_value(value['value'])}")
         elif value['status'] == 'changed':
             result.append(
-                f"Property '{key}' was updated. From {stringify_value(value['old_value'])} to {stringify_value(value['new_value'])}")
+                f"Property '{key}' was updated. From {stringify_value(value['old_value'])} to"
+                f" {stringify_value(value['new_value'])}")
 
     return result
 

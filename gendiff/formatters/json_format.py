@@ -7,5 +7,3 @@ def format(diff):
     diff = sorted(diff.items(), key=lambda x: x[0])
     diff = dict(diff)
     return json.dumps(diff, indent=4)
-
-
