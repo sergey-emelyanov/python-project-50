@@ -1,4 +1,3 @@
-import pytest
 from gendiff import generate_diff
 from tests.fixtures import ideal
 
