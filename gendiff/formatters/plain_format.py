@@ -24,7 +24,8 @@ def plain_format(diff, father_key=''):  # noqa:  C901
                           f"{stringify_value(value['value'])}")
         elif value['status'] == 'changed':
             result.append(
-                f"Property '{key}' was updated. From {stringify_value(value['old_value'])} to"
+                f"Property '{key}' was updated. "
+                f"From {stringify_value(value['old_value'])} to"
                 f" {stringify_value(value['new_value'])}")
 
     return result
