@@ -7,3 +7,26 @@
 
 This CLI utility allows you to show changes in json and yaml files.
 
+##Installation
+- Clone repository from git 
+- make install
+- make build
+- package-install
+
+If you use macOS or linux you should change pyton to python3 in make file
+
+### Work with non-nested file
+
+[![asciicast](https://asciinema.org/a/XAqhLyNFpppZ243VVPOhJXs6X.svg)](https://asciinema.org/a/XAqhLyNFpppZ243VVPOhJXs6X)
+
+### Work with nested file format stylish
+
+[![asciicast](https://asciinema.org/a/WTsNCMdouovxvvJLf9b0Pikmo.svg)](https://asciinema.org/a/WTsNCMdouovxvvJLf9b0Pikmo)
+
+### Work with nested file format plain
+
+[![asciicast](https://asciinema.org/a/BdLLeQnTqVW7Q8HJfITw66e4C.svg)](https://asciinema.org/a/BdLLeQnTqVW7Q8HJfITw66e4C)
+
+### Work with nested file format json
+
+[![asciicast](https://asciinema.org/a/qIgNX8qCaMyLFtY4TeyrZmGlD.svg)](https://asciinema.org/a/qIgNX8qCaMyLFtY4TeyrZmGlD)
