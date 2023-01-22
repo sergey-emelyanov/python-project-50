@@ -1,6 +1,8 @@
 def stringify_value(value):
     if isinstance(value, bool):
         return str(value).lower()
+    if isinstance(value, type(None)):
+        return 'null'
     if isinstance(value, int):
         return str(value)
     if isinstance(value, (dict, list, tuple)):
