@@ -15,7 +15,7 @@ def plain_format(diff, father_key=''):
     for key, value in sorted(diff.items()):
         if len(father_key) > 1:
             key = father_key + '.' + key
-        elif value['status'] == 'nested':
+        if value['status'] == 'nested':
             result.extend(plain_format(value['value'], key))
         elif value['status'] == 'del':
             result.append(f"Property '{key}' was removed")
