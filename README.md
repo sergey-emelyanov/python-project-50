@@ -7,7 +7,14 @@
 
 This CLI utility allows you to show changes in json and yaml files.
 
-##Installation
+___
+### :hammer_and_wrench: Languages and Tools :
+- python  ^3.8
+- poetry  ^1.2
+- pyyaml  ^6.0
+
+
+## Installation
 - Clone repository from git 
 - make install
 - make build
