@@ -10,11 +10,11 @@ def stringify_value(value):
     return f"'{value}'"
 
 
-def plain_format(diff, father_key=''):  # noqa:  C901
+def plain_format(diff, spaces=''):  # noqa:  C901
     result = []
     for key, value in sorted(diff.items()):
-        if len(father_key) > 1:
-            key = father_key + '.' + key
+        if len(spaces) > 1:
+            key = spaces + '.' + key
         if value['status'] == 'nested':
             result.extend(plain_format(value['value'], key))
         elif value['status'] == 'del':

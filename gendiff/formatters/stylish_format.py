@@ -11,31 +11,33 @@ def stringify_val(data, depth: int) -> str:
     return ''.join(tmp)
 
 
+STATUS = {
+    'unchanged': "  ",
+    'add': "+ ",
+    'del': "- "
+}
+
+
 def stringify_diff(diff: dict, depth=1) -> str:
-    lst = []
-    STATUS = {
-        'unchanged': "  ",
-        'add': "+ ",
-        'del': "- "
-    }
+    collector = []
 
     for k, v in sorted(diff.items()):
         status = v['status']
 
         if status == 'nested':
-            lst.append(f"{'  ' * depth}  {k}: {{\n")
-            lst.append(f"{stringify_diff(v['value'], depth + 2)}")
-            lst.append(f"{'  ' * (depth + 1)}}}\n")
+            collector.append(f"{'  ' * depth}  {k}: {{\n")
+            collector.append(f"{stringify_diff(v['value'], depth + 2)}")
+            collector.append(f"{'  ' * (depth + 1)}}}\n")
         elif status == 'changed':
-            lst.append(f"{'  ' * depth}- {k}: "
-                       f"{stringify_val(v['old_value'], depth + 2)}\n")
-            lst.append(f"{'  ' * depth}+ {k}: "
-                       f"{stringify_val(v['new_value'], depth + 2)}\n")
+            collector.append(f"{'  ' * depth}- {k}: "
+                             f"{stringify_val(v['old_value'], depth + 2)}\n")
+            collector.append(f"{'  ' * depth}+ {k}: "
+                             f"{stringify_val(v['new_value'], depth + 2)}\n")
         else:
-            lst.append(f"{'  ' * depth}{STATUS[status]}{k}: "
-                       f"{stringify_val(v['value'], depth + 2)}\n")
-    res = ''.join(lst)
-    return res
+            collector.append(f"{'  ' * depth}{STATUS[status]}{k}: "
+                             f"{stringify_val(v['value'], depth + 2)}\n")
+    result = ''.join(collector)
+    return result
 
 
 def format(diff: dict) -> str:
