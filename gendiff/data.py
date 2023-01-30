@@ -12,3 +12,5 @@ def prepare_data(file_path):
     elif extension == 'yaml' or extension == 'yml':
         data = yaml.safe_load(open(file_path))
         return data
+    else:
+        raise Exception("Unsupported type of file")

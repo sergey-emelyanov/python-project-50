@@ -1,5 +1,11 @@
 from gendiff.formatters.prepare_items import normalize_values
 
+STATUS = {
+    'unchanged': "  ",
+    'add': "+ ",
+    'del': "- "
+}
+
 
 def stringify_val(data, depth: int) -> str:
     if not isinstance(data, dict):
@@ -9,13 +15,6 @@ def stringify_val(data, depth: int) -> str:
         tmp.append(f"\n{'  ' * depth}  {k}: {stringify_val(v, depth + 2)}")
     tmp.append(f"\n{'  ' * (depth - 1)}}}")
     return ''.join(tmp)
-
-
-STATUS = {
-    'unchanged': "  ",
-    'add': "+ ",
-    'del': "- "
-}
 
 
 def stringify_diff(diff: dict, depth=1) -> str:
