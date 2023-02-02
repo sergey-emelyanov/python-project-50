@@ -33,6 +33,6 @@ yaml2nested = r'tests/fixtures/file2nested.yaml'
                              pytest.param(yaml1nested, yaml2nested, 'json', correctyaml_json)
 
                          ]
-                )
+                         )
 def test_generate_diff(test_input1, test_input2, formatter, expected):
     assert generate_diff(test_input1, test_input2, formatter) == expected
