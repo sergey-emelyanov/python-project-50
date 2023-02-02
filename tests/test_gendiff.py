@@ -1,3 +1,4 @@
+import pytest
 from gendiff import generate_diff
 from tests.fixtures import ideal
 
@@ -20,33 +21,18 @@ yaml1nested = r'tests/fixtures/file1nested.yaml'
 yaml2nested = r'tests/fixtures/file2nested.yaml'
 
 
-def test_generate_diff_json():
-    assert generate_diff(json1, json2) == correct_json
+@pytest.mark.parametrize("test_input1,test_input2,formatter,expected",
+                         [
+                             pytest.param(json1, json2, 'stylish', correct_json),
+                             pytest.param(yaml1, yaml2, 'stylish', correct_yaml),
+                             pytest.param(json1nested, json2nested, 'stylish', correct_stylish),
+                             pytest.param(yaml1nested, yaml2nested, 'stylish', correct_stylish_yaml),
+                             pytest.param(json1nested, json2nested, 'plain', correct_plain),
+                             pytest.param(yaml1nested, yaml2nested, 'plain', correct_plain_yaml),
+                             pytest.param(json1nested, json2nested, 'json', correctjson_json),
+                             pytest.param(yaml1nested, yaml2nested, 'json', correctyaml_json)
 
-
-def test_generate_diff_yaml():
-    assert generate_diff(yaml1, yaml2) == correct_yaml
-
-
-def test_generate_diff_stylish():
-    assert generate_diff(json1nested, json2nested, 'stylish') == correct_stylish
-
-
-def test_generate_diff_stylish_yaml():
-    assert generate_diff(yaml1nested, yaml2nested, 'stylish') == correct_stylish_yaml
-
-
-def test_generate_diff_plain():
-    assert generate_diff(json1nested, json2nested, 'plain') == correct_plain
-
-
-def test_generate_diff_plain_yaml():
-    assert generate_diff(yaml1nested, yaml2nested, 'plain') == correct_plain_yaml
-
-
-def test_generate_diff_json_json():
-    assert generate_diff(json1nested, json2nested, 'json') == correctjson_json
-
-
-def test_generate_diff_yaml_json():
-    assert generate_diff(yaml1nested, yaml2nested, 'json') == correctyaml_json
+                         ]
+                )
+def test_generate_diff(test_input1, test_input2, formatter, expected):
+    assert generate_diff(test_input1, test_input2, formatter) == expected
