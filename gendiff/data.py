@@ -4,7 +4,7 @@ import yaml
 EXTENSIONS = ('yaml', 'yml', 'json')
 
 
-def what_format(file_path):
+def get_extension(file_path):
     extension = file_path.split('.')[1]
     return extension
 
@@ -20,7 +20,7 @@ def open_yaml(file_path):
 
 
 def prepare_data(file_path):
-    extension = what_format(file_path)
+    extension = get_extension(file_path)
     if extension == 'json':
         data = open_json(file_path)
         return data
